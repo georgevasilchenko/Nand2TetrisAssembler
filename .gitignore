@@ -4,3 +4,5 @@
 
 /obj/Debug
 /.vs/Nand2TetrisAssembler/v15/Server/sqlite3
+/.vs/Nand2TetrisAssembler/v15
+/bin/Debug

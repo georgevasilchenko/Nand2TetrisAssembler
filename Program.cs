@@ -1,15 +1,18 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace Nand2TetrisAssembler
+﻿namespace Nand2TetrisAssembler
 {
-   class Program
-   {
-      static void Main(string[] args)
-      {
-      }
-   }
+	internal class Program
+	{
+		public static IServiceFactory Factory = new ServiceFactory();
+
+		private static void Main(string[] args)
+		{
+			// Services
+			var argumentsService = Factory.CreateArgumentsService(args);
+			var fileService = Factory.CreateFileService();
+
+			var arguments = argumentsService.GetOptions();
+			var symbols = fileService.GetSymbolsCollection(arguments.SymbolsCollectionPath);
+			var instructions = fileService.GetInstructionsCollection(arguments.AssemblyFilePath);
+		}
+	}
 }
