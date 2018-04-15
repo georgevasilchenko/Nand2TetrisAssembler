@@ -4,3 +4,7 @@
 
 /obj/Debug
 /.vs/Nand2TetrisAssembler/v15/Server/sqlite3
+*.pdb
+.vs/Nand2TetrisAssembler/v15/.suo
+*.exe
+bin/Debug/Nand2TetrisAssembler.exe.config
