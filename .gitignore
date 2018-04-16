@@ -2,7 +2,8 @@
 # This .gitignore file was automatically created by Microsoft(R) Visual Studio.
 ################################################################################
 
-/obj/Debug
-/.vs/Nand2TetrisAssembler/v15/Server/sqlite3
+/obj/
+*.pdb
+*.exe
 /.vs/Nand2TetrisAssembler/v15
-/bin/Debug
+/bin/

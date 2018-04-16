@@ -1,0 +1,11 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<destinations-list>
+   <destination operation="" code="0" />
+   <destination operation="M" code="1" />
+   <destination operation="D" code="2" />
+   <destination operation="MD" code="3" />
+   <destination operation="A" code="4" />
+   <destination operation="AM" code="5" />
+   <destination operation="AD" code="6" />
+   <destination operation="AMD" code="7" />
+</destinations-list>

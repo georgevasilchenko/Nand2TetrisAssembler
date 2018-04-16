@@ -77,6 +77,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Helper.cs" />
     <Compile Include="Models\Argument\ArgumentOptions.cs" />
     <Compile Include="Models\Instruction\InstructionEntry.cs" />
     <Compile Include="Models\Instruction\InstructionsCollection.cs" />
@@ -104,6 +105,11 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="Symbols.xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="c-computations.xml" />
+    <Content Include="c-destinations.xml" />
+    <Content Include="c-jumps.xml" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
