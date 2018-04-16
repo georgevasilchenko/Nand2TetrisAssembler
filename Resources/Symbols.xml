@@ -1,0 +1,26 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<symbols-list>
+   <symbol key="R0" value="0" />
+   <symbol key="R1" value="1" />
+   <symbol key="R2" value="2" />
+   <symbol key="R3" value="3" />
+   <symbol key="R4" value="4" />
+   <symbol key="R5" value="5" />
+   <symbol key="R6" value="6" />
+   <symbol key="R7" value="7" />
+   <symbol key="R8" value="8" />
+   <symbol key="R9" value="9" />
+   <symbol key="R10" value="10" />
+   <symbol key="R11" value="11" />
+   <symbol key="R12" value="12" />
+   <symbol key="R13" value="13" />
+   <symbol key="R14" value="14" />
+   <symbol key="R15" value="15" />
+   <symbol key="SCREEN" value="16384" />
+   <symbol key="KBD" value="24576" />
+   <symbol key="SP" value="0" />
+   <symbol key="LCL" value="1" />
+   <symbol key="ARG" value="2" />
+   <symbol key="THIS" value="3" />
+   <symbol key="THAT" value="4" />
+</symbols-list>

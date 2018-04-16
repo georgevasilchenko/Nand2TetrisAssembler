@@ -75,9 +75,9 @@ namespace Nand2TetrisAssembler.Resources {
         ///   &lt;computation operation=&quot;D+1&quot; code=&quot;31&quot;/&gt;
         ///   &lt;computati [rest of string was truncated]&quot;;.
         /// </summary>
-        internal static string c_computations {
+        internal static string CComputations {
             get {
-                return ResourceManager.GetString("c_computations", resourceCulture);
+                return ResourceManager.GetString("CComputations", resourceCulture);
             }
         }
         
@@ -95,29 +95,28 @@ namespace Nand2TetrisAssembler.Resources {
         ///&lt;/destinations-list&gt;
         ///.
         /// </summary>
-        internal static string c_destinations {
+        internal static string CDestinations {
             get {
-                return ResourceManager.GetString("c_destinations", resourceCulture);
+                return ResourceManager.GetString("CDestinations", resourceCulture);
             }
         }
         
         /// <summary>
         ///   Looks up a localized string similar to &lt;?xml version=&quot;1.0&quot; encoding=&quot;utf-8&quot; ?&gt;
-        ///&lt;jums-list&gt;
-        ///   &lt;jump operation=&quot;&quot; code=&quot;0&quot;/&gt;
-        ///   &lt;jump operation=&quot;JGT&quot; code=&quot;1&quot;/&gt;
-        ///   &lt;jump operation=&quot;JEQ&quot; code=&quot;2&quot;/&gt;
-        ///   &lt;jump operation=&quot;JGE&quot; code=&quot;3&quot;/&gt;
-        ///   &lt;jump operation=&quot;JLT&quot; code=&quot;4&quot;/&gt;
-        ///   &lt;jump operation=&quot;JNE&quot; code=&quot;5&quot;/&gt;
-        ///   &lt;jump operation=&quot;JLE&quot; code=&quot;6&quot;/&gt;
-        ///   &lt;jump operation=&quot;JMP&quot; code=&quot;7&quot;/&gt;
-        ///&lt;/jums-list&gt;
-        ///.
+        ///&lt;jumps-list&gt;
+        ///	&lt;jump operation=&quot;&quot; code=&quot;0&quot; /&gt;
+        ///	&lt;jump operation=&quot;JGT&quot; code=&quot;1&quot; /&gt;
+        ///	&lt;jump operation=&quot;JEQ&quot; code=&quot;2&quot; /&gt;
+        ///	&lt;jump operation=&quot;JGE&quot; code=&quot;3&quot; /&gt;
+        ///	&lt;jump operation=&quot;JLT&quot; code=&quot;4&quot; /&gt;
+        ///	&lt;jump operation=&quot;JNE&quot; code=&quot;5&quot; /&gt;
+        ///	&lt;jump operation=&quot;JLE&quot; code=&quot;6&quot; /&gt;
+        ///	&lt;jump operation=&quot;JMP&quot; code=&quot;7&quot; /&gt;
+        ///&lt;/jumps-list&gt;.
         /// </summary>
-        internal static string c_jumps {
+        internal static string CJumps {
             get {
-                return ResourceManager.GetString("c_jumps", resourceCulture);
+                return ResourceManager.GetString("CJumps", resourceCulture);
             }
         }
         
@@ -129,9 +128,9 @@ namespace Nand2TetrisAssembler.Resources {
         ///	&lt;symbol key=&quot;R2&quot; value=&quot;2&quot; /&gt;
         ///&lt;/symbols-list&gt;.
         /// </summary>
-        internal static string symbols {
+        internal static string Symbols {
             get {
-                return ResourceManager.GetString("symbols", resourceCulture);
+                return ResourceManager.GetString("Symbols", resourceCulture);
             }
         }
     }

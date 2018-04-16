@@ -92,6 +92,7 @@
     <Compile Include="Models\Definitions\DestinationDefinition\DestinationDefinitionsCollection.cs" />
     <Compile Include="Models\Definitions\JumpDefinition\JumpDefinitionEntry.cs" />
     <Compile Include="Models\Definitions\JumpDefinition\JumpDefinitionsCollection.cs" />
+    <Compile Include="Models\Instruction\BinaryInstructionEntry.cs" />
     <Compile Include="Models\Instruction\InstructionEntry.cs" />
     <Compile Include="Models\Instruction\InstructionsCollection.cs" />
     <Compile Include="Resources\StaticData.Designer.cs">
@@ -99,9 +100,12 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>StaticData.resx</DependentUpon>
     </Compile>
+    <Compile Include="Services\Instruction\IInstructionService.cs" />
+    <Compile Include="Services\Instruction\InstructionService.cs" />
     <Compile Include="Specifications\IArgumentOptions.cs" />
     <Compile Include="Contracts\Symbol\SymbolEntryDto.cs" />
     <Compile Include="Contracts\Symbol\SymbolsCollectionDto.cs" />
+    <Compile Include="Specifications\IBinaryInstructionEntry.cs" />
     <Compile Include="Specifications\IDefinitionEntry.cs" />
     <Compile Include="Specifications\IDefinitionsCollection.cs" />
     <Compile Include="Specifications\IInstructionsCollection.cs" />
@@ -124,19 +128,16 @@
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="symbols.xml" />
-  </ItemGroup>
-  <ItemGroup>
-    <Content Include="c-computations.xml" />
-    <Content Include="c-destinations.xml" />
-    <Content Include="c-jumps.xml" />
-  </ItemGroup>
-  <ItemGroup>
     <EmbeddedResource Include="Resources\StaticData.resx">
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>StaticData.Designer.cs</LastGenOutput>
     </EmbeddedResource>
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <Content Include="Resources\CComputations.xml" />
+    <Content Include="Resources\CDestinations.xml" />
+    <Content Include="Resources\CJumps.xml" />
+    <Content Include="Resources\Symbols.xml" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

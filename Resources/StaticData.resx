@@ -118,16 +118,16 @@
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <assembly alias="System.Windows.Forms" name="System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
-  <data name="c_computations" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\c-computations.xml;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;utf-8</value>
+  <data name="CComputations" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>CComputations.xml;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;utf-8</value>
   </data>
-  <data name="c_destinations" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\c-destinations.xml;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;utf-8</value>
+  <data name="CDestinations" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>CDestinations.xml;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;utf-8</value>
   </data>
-  <data name="c_jumps" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\c-jumps.xml;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;utf-8</value>
+  <data name="CJumps" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>CJumps.xml;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;utf-8</value>
   </data>
-  <data name="symbols" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\symbols.xml;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;utf-8</value>
+  <data name="Symbols" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>Symbols.xml;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;utf-8</value>
   </data>
 </root>

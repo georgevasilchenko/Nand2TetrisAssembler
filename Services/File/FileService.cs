@@ -3,71 +3,53 @@ using System.Xml.Serialization;
 
 namespace Nand2TetrisAssembler
 {
-	public class FileService : IFileService
-	{
-		public IInstructionsCollection GetInstructionsCollection(string path)
-		{
-			var result = default(InstructionsCollection);
-			var lines = File.ReadAllLines(path);
+   public class FileService : IFileService
+   {
+      public IInstructionsCollection GetInstructionsCollection(string path)
+      {
+         var result = default(InstructionsCollection);
+         var lines = File.ReadAllLines(path);
 
-			result = new InstructionsCollection(lines);
+         result = new InstructionsCollection(lines);
 
-			return result;
-		}
+         return result;
+      }
 
-		public IDefinitionsCollection GetComputationDefinitionsCollection()
-		{
-			var xmlSource = Resources.StaticData.c_computations;
-			var xmlSerializer = new XmlSerializer(typeof(ComputationDefinitionsCollectionDto));
-			var dto = default(ComputationDefinitionsCollectionDto);
+      public IDefinitionsCollection GetComputationDefinitionsCollection()
+      {
+         var dto = DeserializeXml<ComputationDefinitionsCollectionDto>(Resources.StaticData.CComputations);
+         return new ComputationDefinitionsCollection(dto);
+      }
 
-			using (var reader = new StringReader(xmlSource))
-			{
-				dto = (ComputationDefinitionsCollectionDto)xmlSerializer.Deserialize(reader);
-			}
+      public ISymbolsCollection GetSymbolsCollection()
+      {
+         var dto = DeserializeXml<SymbolsCollectionDto>(Resources.StaticData.Symbols);
+         return new SymbolsCollection(dto);
+      }
 
-			return new ComputationDefinitionsCollection(dto);
-		}
+      public IDefinitionsCollection GetJumpDefinitionsCollection()
+      {
+         var dto = DeserializeXml<JumpDefinitionsCollectionDto>(Resources.StaticData.CJumps);
+         return new JumpDefinitionsCollection(dto);
+      }
 
-		public ISymbolsCollection GetSymbolsCollection(string path)
-		{
-			var xmlSerializer = new XmlSerializer(typeof(SymbolsCollectionDto));
-			var dto = default(SymbolsCollectionDto);
+      public IDefinitionsCollection GetDestinationDefinitionsCollection()
+      {
+         var dto = DeserializeXml<DestinationDefinitionsCollectionDto>(Resources.StaticData.CDestinations);
+         return new DestinationDefinitionsCollection(dto);
+      }
 
-			using (var stream = new FileStream(path, FileMode.Open))
-			{
-				dto = (SymbolsCollectionDto)xmlSerializer.Deserialize(stream);
-			}
+      private TDto DeserializeXml<TDto>(string sourceXml)
+      {
+         var xmlSerializer = new XmlSerializer(typeof(TDto));
+         var dto = default(TDto);
 
-			return new SymbolsCollection(dto);
-		}
+         using (var reader = new StringReader(sourceXml))
+         {
+            dto = (TDto)xmlSerializer.Deserialize(reader);
+         }
 
-		public IDefinitionsCollection GetJumpDefinitionsCollection()
-		{
-			var xmlSource = Resources.StaticData.c_jumps;
-			var xmlSerializer = new XmlSerializer(typeof(JumpDefinitionsCollectionDto));
-			var dto = default(JumpDefinitionsCollectionDto);
-
-			using (var reader = new StringReader(xmlSource))
-			{
-				dto = (JumpDefinitionsCollectionDto)xmlSerializer.Deserialize(reader);
-			}
-
-			return new JumpDefinitionsCollection(dto);
-		}
-
-		public IDefinitionsCollection GetDestinationDefinitionsCollection()
-		{
-			var xmlSource = Resources.StaticData.c_destinations;
-			var xmlSerializer = new XmlSerializer(typeof(DestinationDefinitionsCollectionDto));
-			var dto = default(DestinationDefinitionsCollectionDto);
-
-			using (var reader = new StringReader(xmlSource))
-			{
-				dto = (DestinationDefinitionsCollectionDto)xmlSerializer.Deserialize(reader);
-			}
-
-			return new DestinationDefinitionsCollection(dto);
-		}
-	}
+         return dto;
+      }
+   }
 }

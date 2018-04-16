@@ -3,38 +3,56 @@ using System.Collections.Generic;
 
 namespace Nand2TetrisAssembler
 {
-	public class InstructionsCollection : IInstructionsCollection, IEnumerable<IInstructionEntry>, ICollection<IInstructionEntry>
-	{
-		public ICollection<IInstructionEntry> Instructions { get; set; }
+   public class InstructionsCollection : IInstructionsCollection, IEnumerable<IInstructionEntry>, IList<IInstructionEntry>
+   {
+      public List<IInstructionEntry> Instructions { get; private set; }
 
-		public InstructionsCollection() => Instructions = new List<IInstructionEntry>();
+      IEnumerable<IInstructionEntry> IInstructionsCollection.Instructions => Instructions;
 
-		public InstructionsCollection(string[] instructionsTextLines)
-			: this()
-		{
-		}
+      public int Count => ((IList<IInstructionEntry>)Instructions).Count;
 
-		public void Add(IInstructionEntry item)
-		{
-			Instructions.Add(item);
-		}
+      public bool IsReadOnly => ((IList<IInstructionEntry>)Instructions).IsReadOnly;
 
-		public IEnumerator<IInstructionEntry> GetEnumerator() => Instructions.GetEnumerator();
+      public InstructionsCollection() => Instructions = new List<IInstructionEntry>();
 
-		public void Clear() => Instructions.Clear();
+      public InstructionsCollection(string[] instructionsTextLines)
+         : this()
+      {
+         foreach (var instructionTextLine in instructionsTextLines)
+         {
+            Instructions.Add(new InstructionEntry(instructionTextLine));
+         }
+      }
 
-		public bool Contains(IInstructionEntry item) => Instructions.Contains(item);
+      public InstructionsCollection(IInstructionsCollection instructionsCollection)
+         : this()
+      {
+         foreach (var instructionSpec in instructionsCollection.Instructions)
+         {
+            Instructions.Add(new InstructionEntry(instructionSpec));
+         }
+      }
 
-		public void CopyTo(IInstructionEntry[] array, int arrayIndex) => Instructions.CopyTo(array, arrayIndex);
+      public IInstructionEntry this[int index] { get => ((IList<IInstructionEntry>)Instructions)[index]; set => ((IList<IInstructionEntry>)Instructions)[index] = value; }
 
-		public bool Remove(IInstructionEntry item) => Instructions.Remove(item);
+      public IEnumerator<IInstructionEntry> GetEnumerator() => Instructions.GetEnumerator();
 
-		public int Count => Instructions.Count;
+      IEnumerator IEnumerable.GetEnumerator() => Instructions.GetEnumerator();
 
-		public bool IsReadOnly => Instructions.IsReadOnly;
+      public int IndexOf(IInstructionEntry item) => ((IList<IInstructionEntry>)Instructions).IndexOf(item);
 
-		IEnumerator IEnumerable.GetEnumerator() => Instructions.GetEnumerator();
+      public void Insert(int index, IInstructionEntry item) => ((IList<IInstructionEntry>)Instructions).Insert(index, item);
 
-		IEnumerable<IInstructionEntry> IInstructionsCollection.Instructions => Instructions;
-	}
+      public void RemoveAt(int index) => ((IList<IInstructionEntry>)Instructions).RemoveAt(index);
+
+      public void Add(IInstructionEntry item) => ((IList<IInstructionEntry>)Instructions).Add(item);
+
+      public void Clear() => ((IList<IInstructionEntry>)Instructions).Clear();
+
+      public bool Contains(IInstructionEntry item) => ((IList<IInstructionEntry>)Instructions).Contains(item);
+
+      public void CopyTo(IInstructionEntry[] array, int arrayIndex) => ((IList<IInstructionEntry>)Instructions).CopyTo(array, arrayIndex);
+
+      public bool Remove(IInstructionEntry item) => ((IList<IInstructionEntry>)Instructions).Remove(item);
+   }
 }

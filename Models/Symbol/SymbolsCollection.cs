@@ -1,43 +1,41 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
-using System.Xml.Serialization;
 
 namespace Nand2TetrisAssembler
 {
-	[XmlRoot("symbols-list")]
-	public class SymbolsCollection : ISymbolsCollection, IEnumerable<ISymbolEntry>, ICollection<ISymbolEntry>
-	{
-		public ICollection<ISymbolEntry> Symbols { get; set; }
+   public class SymbolsCollection : ISymbolsCollection, IEnumerable<ISymbolEntry>, ICollection<ISymbolEntry>
+   {
+      public ICollection<ISymbolEntry> Symbols { get; private set; }
 
-		public SymbolsCollection() => Symbols = new List<ISymbolEntry>();
+      public int Count => ((ICollection<ISymbolEntry>)Symbols).Count;
 
-		public SymbolsCollection(ISymbolsCollection spec)
-		{
-			Symbols = new List<ISymbolEntry>();
-			foreach (var item in spec.Symbols)
-			{
-				Symbols.Add(new SymbolEntry(item));
-			}
-		}
+      public bool IsReadOnly => ((ICollection<ISymbolEntry>)Symbols).IsReadOnly;
 
-		public int Count => ((ICollection<ISymbolEntry>)Symbols).Count;
+      IEnumerable<ISymbolEntry> ISymbolsCollection.Symbols => Symbols;
 
-		public bool IsReadOnly => ((ICollection<ISymbolEntry>)Symbols).IsReadOnly;
+      public SymbolsCollection() => Symbols = new List<ISymbolEntry>();
 
-		public IEnumerator<ISymbolEntry> GetEnumerator() => ((SymbolsCollection)this).Symbols.GetEnumerator();
+      public SymbolsCollection(ISymbolsCollection spec)
+      {
+         Symbols = new List<ISymbolEntry>();
+         foreach (var item in spec.Symbols)
+         {
+            Symbols.Add(new SymbolEntry(item));
+         }
+      }
 
-		public void Add(ISymbolEntry item) => ((ICollection<ISymbolEntry>)Symbols).Add(item);
+      public IEnumerator<ISymbolEntry> GetEnumerator() => ((SymbolsCollection)this).Symbols.GetEnumerator();
 
-		public void Clear() => ((ICollection<ISymbolEntry>)Symbols).Clear();
+      public void Add(ISymbolEntry item) => ((ICollection<ISymbolEntry>)Symbols).Add(item);
 
-		public bool Contains(ISymbolEntry item) => ((ICollection<ISymbolEntry>)Symbols).Contains(item);
+      public void Clear() => ((ICollection<ISymbolEntry>)Symbols).Clear();
 
-		public void CopyTo(ISymbolEntry[] array, int arrayIndex) => ((ICollection<ISymbolEntry>)Symbols).CopyTo(array, arrayIndex);
+      public bool Contains(ISymbolEntry item) => ((ICollection<ISymbolEntry>)Symbols).Contains(item);
 
-		public bool Remove(ISymbolEntry item) => ((ICollection<ISymbolEntry>)Symbols).Remove(item);
+      public void CopyTo(ISymbolEntry[] array, int arrayIndex) => ((ICollection<ISymbolEntry>)Symbols).CopyTo(array, arrayIndex);
 
-		IEnumerator IEnumerable.GetEnumerator() => ((SymbolsCollection)this).Symbols.GetEnumerator();
+      public bool Remove(ISymbolEntry item) => ((ICollection<ISymbolEntry>)Symbols).Remove(item);
 
-		IEnumerable<ISymbolEntry> ISymbolsCollection.Symbols => Symbols;
-	}
+      IEnumerator IEnumerable.GetEnumerator() => ((SymbolsCollection)this).Symbols.GetEnumerator();
+   }
 }

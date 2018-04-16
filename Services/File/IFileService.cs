@@ -1,15 +1,15 @@
 ﻿namespace Nand2TetrisAssembler
 {
-	public interface IFileService
-	{
-		ISymbolsCollection GetSymbolsCollection(string path);
+   public interface IFileService
+   {
+      ISymbolsCollection GetSymbolsCollection();
 
-		IInstructionsCollection GetInstructionsCollection(string path);
+      IInstructionsCollection GetInstructionsCollection(string path);
 
-		IDefinitionsCollection GetComputationDefinitionsCollection();
+      IDefinitionsCollection GetComputationDefinitionsCollection();
 
-		IDefinitionsCollection GetJumpDefinitionsCollection();
+      IDefinitionsCollection GetJumpDefinitionsCollection();
 
-		IDefinitionsCollection GetDestinationDefinitionsCollection();
-	}
+      IDefinitionsCollection GetDestinationDefinitionsCollection();
+   }
 }

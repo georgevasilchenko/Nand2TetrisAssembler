@@ -1,31 +1,30 @@
-﻿using System;
-using System.Collections;
+﻿using System.Collections;
 using System.Collections.Generic;
 
 namespace Nand2TetrisAssembler
 {
-	public class ComputationDefinitionsCollection : IDefinitionsCollection, IEnumerable<IDefinitionEntry>, IReadOnlyCollection<IDefinitionEntry>
-	{
-		public IReadOnlyCollection<IDefinitionEntry> Definitions { get; set; }
+   public class ComputationDefinitionsCollection : IDefinitionsCollection, IEnumerable<IDefinitionEntry>, IReadOnlyCollection<IDefinitionEntry>
+   {
+      public IReadOnlyCollection<IDefinitionEntry> Definitions { get; private set; }
 
-		public ComputationDefinitionsCollection(IDefinitionsCollection definitionsCollectionSpecifiction)
-		{
-			var temp = new List<IDefinitionEntry>();
+      public int Count => Definitions.Count;
 
-			foreach (var definitionSpecification in definitionsCollectionSpecifiction.Definitions)
-			{
-				temp.Add(new ComputationDefinitionEntry(definitionSpecification));
-			}
+      IEnumerable<IDefinitionEntry> IDefinitionsCollection.Definitions => Definitions;
 
-			Definitions = temp;
-		}
+      public ComputationDefinitionsCollection(IDefinitionsCollection definitionsCollectionSpecifiction)
+      {
+         var temp = new List<IDefinitionEntry>();
 
-		public int Count => Definitions.Count;
+         foreach (var definitionSpecification in definitionsCollectionSpecifiction.Definitions)
+         {
+            temp.Add(new ComputationDefinitionEntry(definitionSpecification));
+         }
 
-		public IEnumerator<IDefinitionEntry> GetEnumerator() => Definitions.GetEnumerator();
+         Definitions = temp;
+      }
 
-		IEnumerable<IDefinitionEntry> IDefinitionsCollection.Definitions => Definitions;
+      public IEnumerator<IDefinitionEntry> GetEnumerator() => Definitions.GetEnumerator();
 
-		IEnumerator IEnumerable.GetEnumerator() => Definitions.GetEnumerator();
-	}
+      IEnumerator IEnumerable.GetEnumerator() => Definitions.GetEnumerator();
+   }
 }
