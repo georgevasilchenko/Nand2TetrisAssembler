@@ -77,13 +77,33 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Contracts\Definitions\ComputationDefinition\ComputationDefinitionsCollectionDto.cs" />
+    <Compile Include="Contracts\Definitions\ComputationDefinition\ComputationDefinitionEntryDto.cs" />
+    <Compile Include="Contracts\Definitions\DestinationDefinition\DestinationDefinitionEntryDto.cs" />
+    <Compile Include="Contracts\Definitions\DestinationDefinition\DestinationDefinitionsCollectionDto.cs" />
+    <Compile Include="Contracts\Definitions\JumpDefinition\JumpDefinitionEntryDto.cs" />
+    <Compile Include="Contracts\Definitions\JumpDefinition\JumpDefinitionsCollectionDto.cs" />
     <Compile Include="Helper.cs" />
+    <Compile Include="Misc\IBitConvertable.cs" />
     <Compile Include="Models\Argument\ArgumentOptions.cs" />
+    <Compile Include="Models\Definitions\ComputationDefinition\ComputationDefinitionEntry.cs" />
+    <Compile Include="Models\Definitions\ComputationDefinition\ComputationDefinitionsCollection.cs" />
+    <Compile Include="Models\Definitions\DestinationDefinition\DestinationDefinitionEntry.cs" />
+    <Compile Include="Models\Definitions\DestinationDefinition\DestinationDefinitionsCollection.cs" />
+    <Compile Include="Models\Definitions\JumpDefinition\JumpDefinitionEntry.cs" />
+    <Compile Include="Models\Definitions\JumpDefinition\JumpDefinitionsCollection.cs" />
     <Compile Include="Models\Instruction\InstructionEntry.cs" />
     <Compile Include="Models\Instruction\InstructionsCollection.cs" />
+    <Compile Include="Resources\StaticData.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>StaticData.resx</DependentUpon>
+    </Compile>
     <Compile Include="Specifications\IArgumentOptions.cs" />
     <Compile Include="Contracts\Symbol\SymbolEntryDto.cs" />
     <Compile Include="Contracts\Symbol\SymbolsCollectionDto.cs" />
+    <Compile Include="Specifications\IDefinitionEntry.cs" />
+    <Compile Include="Specifications\IDefinitionsCollection.cs" />
     <Compile Include="Specifications\IInstructionsCollection.cs" />
     <Compile Include="Specifications\IInstructionEntry.cs" />
     <Compile Include="Specifications\ISymbolEntry.cs" />
@@ -104,12 +124,19 @@
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="Symbols.xml" />
+    <Content Include="symbols.xml" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="c-computations.xml" />
     <Content Include="c-destinations.xml" />
     <Content Include="c-jumps.xml" />
   </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Resources\StaticData.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>StaticData.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

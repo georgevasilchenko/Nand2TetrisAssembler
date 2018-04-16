@@ -1,11 +1,11 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
-<jums-list>
-   <jump operation="" code="0"/>
-   <jump operation="JGT" code="1"/>
-   <jump operation="JEQ" code="2"/>
-   <jump operation="JGE" code="3"/>
-   <jump operation="JLT" code="4"/>
-   <jump operation="JNE" code="5"/>
-   <jump operation="JLE" code="6"/>
-   <jump operation="JMP" code="7"/>
-</jums-list>
+<jumps-list>
+	<jump operation="" code="0" />
+	<jump operation="JGT" code="1" />
+	<jump operation="JEQ" code="2" />
+	<jump operation="JGE" code="3" />
+	<jump operation="JLT" code="4" />
+	<jump operation="JNE" code="5" />
+	<jump operation="JLE" code="6" />
+	<jump operation="JMP" code="7" />
+</jumps-list>

@@ -21,13 +21,17 @@ namespace Nand2TetrisAssembler
 			var symbols = fileService.GetSymbolsCollection(arguments.SymbolsCollectionPath);
 			var instructions = fileService.GetInstructionsCollection(arguments.AssemblyFilePath);
 
-			var lines = File.ReadAllLines(@"C:\Users\admin\Documents\GitHub\Nand2TetrisAssembler\Rect.asm");
+			var computationDefinitions = fileService.GetComputationDefinitionsCollection();
+			var jumsDefinitions = fileService.GetJumpDefinitionsCollection();
+			var destinationDefinitions = fileService.GetDestinationDefinitionsCollection();
 
-			var helper = new Helper();
-			var instructionsLines = helper.CleanCommentsAndWhiteSpace(lines);
+			//var lines = File.ReadAllLines(@"C:\Users\admin\Documents\GitHub\Nand2TetrisAssembler\Rect.asm");
 
-			helper.ExtractLabels(instructionsLines);
-			helper.ExtractVariables(instructionsLines);
+			//var helper = new Helper();
+			//var instructionsLines = helper.CleanCommentsAndWhiteSpace(lines);
+
+			//helper.ExtractLabels(instructionsLines);
+			//helper.ExtractVariables(instructionsLines);
 		}
 	}
 }

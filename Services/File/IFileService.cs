@@ -6,6 +6,10 @@
 
 		IInstructionsCollection GetInstructionsCollection(string path);
 
-		void WriteHackFile(string text);
+		IDefinitionsCollection GetComputationDefinitionsCollection();
+
+		IDefinitionsCollection GetJumpDefinitionsCollection();
+
+		IDefinitionsCollection GetDestinationDefinitionsCollection();
 	}
 }
