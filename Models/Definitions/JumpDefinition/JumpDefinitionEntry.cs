@@ -9,19 +9,7 @@ namespace Nand2TetrisAssembler
 
 		public int Code { get; private set; }
 
-		public int[] Bits
-		{
-			get
-			{
-				var text = Convert.ToString(Code, 2);
-
-				var bits = text.PadLeft(3, '0')
-								 .Select(c => int.Parse(c.ToString()))
-								 .ToArray();
-
-				return bits;
-			}
-		}
+		public int[] Bits => Converter.IntToBitArray(Code, 3).ToArray();
 
 		public JumpDefinitionEntry(IDefinitionEntry spec)
 		{

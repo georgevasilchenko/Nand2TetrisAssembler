@@ -84,7 +84,7 @@
     <Compile Include="Contracts\Definitions\JumpDefinition\JumpDefinitionEntryDto.cs" />
     <Compile Include="Contracts\Definitions\JumpDefinition\JumpDefinitionsCollectionDto.cs" />
     <Compile Include="Helper.cs" />
-    <Compile Include="Misc\IBitConvertable.cs" />
+    <Compile Include="Misc\Converter.cs" />
     <Compile Include="Models\Argument\ArgumentOptions.cs" />
     <Compile Include="Models\Definitions\ComputationDefinition\ComputationDefinitionEntry.cs" />
     <Compile Include="Models\Definitions\ComputationDefinition\ComputationDefinitionsCollection.cs" />
@@ -92,7 +92,9 @@
     <Compile Include="Models\Definitions\DestinationDefinition\DestinationDefinitionsCollection.cs" />
     <Compile Include="Models\Definitions\JumpDefinition\JumpDefinitionEntry.cs" />
     <Compile Include="Models\Definitions\JumpDefinition\JumpDefinitionsCollection.cs" />
+    <Compile Include="Models\Instruction\BinaryInstructionCollection.cs" />
     <Compile Include="Models\Instruction\BinaryInstructionEntry.cs" />
+    <Compile Include="Specifications\IBinaryInstructionCollection.cs" />
     <Compile Include="Models\Instruction\InstructionEntry.cs" />
     <Compile Include="Models\Instruction\InstructionsCollection.cs" />
     <Compile Include="Resources\StaticData.Designer.cs">
@@ -100,6 +102,8 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>StaticData.resx</DependentUpon>
     </Compile>
+    <Compile Include="Services\BitsBuilder\BitsBuilderService.cs" />
+    <Compile Include="Services\BitsBuilder\IBitsBuilderService.cs" />
     <Compile Include="Services\Instruction\IInstructionService.cs" />
     <Compile Include="Services\Instruction\InstructionService.cs" />
     <Compile Include="Specifications\IArgumentOptions.cs" />

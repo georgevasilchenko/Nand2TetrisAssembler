@@ -6,8 +6,10 @@ using System.Threading.Tasks;
 
 namespace Nand2TetrisAssembler
 {
-	public interface IBitConvertable
+	public interface IBinaryInstructionCollection
 	{
-		int[] GetBits();
+		IEnumerable<IBinaryInstructionEntry> Instructions { get; }
+
+		void Add(IBinaryInstructionEntry entry);
 	}
 }

@@ -1,32 +1,34 @@
 ﻿using System;
+using System.Linq;
 
 namespace Nand2TetrisAssembler
 {
-   public class BinaryInstructionEntry : IBinaryInstructionEntry
-   {
-      public int[] Code { get; private set; }
+	public class BinaryInstructionEntry : IBinaryInstructionEntry
+	{
+		public int[] Code { get; private set; }
 
-      public BinaryInstructionEntry(IInstructionEntry instructionEntry)
-      {
-         if (instructionEntry.Value.StartsWith("@"))
-         {
-            CreateFromAInstruction(instructionEntry);
-         }
-         else
-         {
-            CreateFromCInstruction(instructionEntry);
-         }
-      }
+		public BinaryInstructionEntry(string bitsText)
+		{
+			Code = bitsText
+				.Select(c => int.Parse(c.ToString()))
+				.ToArray();
+		}
 
-      public override string ToString()
-      {
-         return "";
-      }
+		public BinaryInstructionEntry(int[] bits)
+		{
+			Code = bits;
+		}
 
-      private void CreateFromCInstruction(IInstructionEntry instructionEntry)
-      {
-      }
+		public BinaryInstructionEntry(int number)
+		{
+			Code = Converter.IntToBitArray(number).ToArray();
+		}
 
-      private void CreateFromAInstruction(IInstructionEntry instructionEntry) => throw new NotImplementedException();
-   }
+		public BinaryInstructionEntry(IBinaryInstructionEntry spec)
+		{
+			Code = spec.Code;
+		}
+
+		public override string ToString() => string.Join("", Code.Reverse());
+	}
 }
