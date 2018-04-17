@@ -1,7 +1,10 @@
 ﻿namespace Nand2TetrisAssembler
 {
+   /// <summary>IInstructionService class.</summary>
    public interface IInstructionService
    {
-      void Assemble();
+      /// <summary>Assembles this instance.</summary>
+      /// <returns>A <see cref="string" /> reference.</returns>
+      string Assemble();
    }
 }

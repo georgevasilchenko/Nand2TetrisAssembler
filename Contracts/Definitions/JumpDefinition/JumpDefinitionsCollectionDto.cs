@@ -3,14 +3,23 @@ using System.Xml.Serialization;
 
 namespace Nand2TetrisAssembler
 {
-	[XmlRoot("jumps-list")]
-	public class JumpDefinitionsCollectionDto : IDefinitionsCollection
-	{
-		[XmlElement("jump")]
-		public List<JumpDefinitionEntryDto> Definitions { get; set; }
+   /// <summary>JumpDefinitionsCollectionDto class.</summary>
+   /// <seealso cref="Nand2TetrisAssembler.IDefinitionsCollection" />
+   [XmlRoot("jumps-list")]
+   public class JumpDefinitionsCollectionDto : IDefinitionsCollection
+   {
+      /// <summary>Gets or sets the definitions.</summary>
+      /// <value>The definitions.</value>
+      [XmlElement("jump")]
+      public List<JumpDefinitionEntryDto> Definitions { get; set; }
 
-		IEnumerable<IDefinitionEntry> IDefinitionsCollection.Definitions => Definitions;
+      /// <summary>Gets the definitions.</summary>
+      /// <value>The definitions.</value>
+      IEnumerable<IDefinitionEntry> IDefinitionsCollection.Definitions => Definitions;
 
-		public JumpDefinitionsCollectionDto() => Definitions = new List<JumpDefinitionEntryDto>();
-	}
+      /// <summary>
+      /// Initializes a new instance of the <see cref="JumpDefinitionsCollectionDto" /> class.
+      /// </summary>
+      public JumpDefinitionsCollectionDto() => Definitions = new List<JumpDefinitionEntryDto>();
+   }
 }

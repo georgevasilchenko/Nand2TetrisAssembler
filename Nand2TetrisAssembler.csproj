@@ -83,8 +83,8 @@
     <Compile Include="Contracts\Definitions\DestinationDefinition\DestinationDefinitionsCollectionDto.cs" />
     <Compile Include="Contracts\Definitions\JumpDefinition\JumpDefinitionEntryDto.cs" />
     <Compile Include="Contracts\Definitions\JumpDefinition\JumpDefinitionsCollectionDto.cs" />
-    <Compile Include="Helper.cs" />
-    <Compile Include="Misc\Converter.cs" />
+    <Compile Include="Utility\Helper.cs" />
+    <Compile Include="Utility\Converter.cs" />
     <Compile Include="Models\Argument\ArgumentOptions.cs" />
     <Compile Include="Models\Definitions\ComputationDefinition\ComputationDefinitionEntry.cs" />
     <Compile Include="Models\Definitions\ComputationDefinition\ComputationDefinitionsCollection.cs" />
@@ -138,9 +138,13 @@
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>
+    <Content Include="AssignmentFiles\Add.asm" />
     <Content Include="Resources\CComputations.xml" />
     <Content Include="Resources\CDestinations.xml" />
     <Content Include="Resources\CJumps.xml" />
+    <Content Include="AssignmentFiles\Max.asm" />
+    <Content Include="AssignmentFiles\Pong.asm" />
+    <Content Include="AssignmentFiles\Rect.asm" />
     <Content Include="Resources\Symbols.xml" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

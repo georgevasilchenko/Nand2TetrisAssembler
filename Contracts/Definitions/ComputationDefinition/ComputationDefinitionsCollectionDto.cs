@@ -3,14 +3,23 @@ using System.Xml.Serialization;
 
 namespace Nand2TetrisAssembler
 {
-	[XmlRoot("computations-list")]
-	public class ComputationDefinitionsCollectionDto : IDefinitionsCollection
-	{
-		[XmlElement("computation")]
-		public List<ComputationDefinitionEntryDto> Definitions { get; set; }
+   /// <summary>ComputationDefinitionsCollectionDto class.</summary>
+   /// <seealso cref="Nand2TetrisAssembler.IDefinitionsCollection" />
+   [XmlRoot("computations-list")]
+   public class ComputationDefinitionsCollectionDto : IDefinitionsCollection
+   {
+      /// <summary>Gets or sets the definitions.</summary>
+      /// <value>The definitions.</value>
+      [XmlElement("computation")]
+      public List<ComputationDefinitionEntryDto> Definitions { get; set; }
 
-		IEnumerable<IDefinitionEntry> IDefinitionsCollection.Definitions => Definitions;
+      /// <summary>Gets the definitions.</summary>
+      /// <value>The definitions.</value>
+      IEnumerable<IDefinitionEntry> IDefinitionsCollection.Definitions => Definitions;
 
-		public ComputationDefinitionsCollectionDto() => Definitions = new List<ComputationDefinitionEntryDto>();
-	}
+      /// <summary>
+      /// Initializes a new instance of the <see cref="ComputationDefinitionsCollectionDto" /> class.
+      /// </summary>
+      public ComputationDefinitionsCollectionDto() => Definitions = new List<ComputationDefinitionEntryDto>();
+   }
 }

@@ -2,12 +2,20 @@
 
 namespace Nand2TetrisAssembler
 {
-	public interface ISymbolsCollection
-	{
-		IEnumerable<ISymbolEntry> Symbols { get; }
+   /// <summary>ISymbolsCollection interface.</summary>
+   public interface ISymbolsCollection
+   {
+      /// <summary>Gets the symbols.</summary>
+      /// <value>The symbols.</value>
+      IEnumerable<ISymbolEntry> Symbols { get; }
 
-		void Add(ISymbolEntry entry);
+      /// <summary>Adds the specified entry.</summary>
+      /// <param name="entry">The entry.</param>
+      void Add(ISymbolEntry entry);
 
-		bool Contains(string key);
-	}
+      /// <summary>Determines whether [contains] [the specified key].</summary>
+      /// <param name="key">The key.</param>
+      /// <returns><c>true</c> if [contains] [the specified key]; otherwise, <c>false</c>.</returns>
+      bool Contains(string key);
+   }
 }

@@ -4,89 +4,103 @@ using System.Linq;
 
 namespace Nand2TetrisAssembler
 {
-	public class BitsBuilderService : IBitsBuilderService
-	{
-		private readonly IDefinitionsCollection _computationDefinitionsCollection;
-		private readonly IDefinitionsCollection _jumpDefinitionsCollection;
-		private readonly IDefinitionsCollection _destinationDefinitionsCollection;
+   /// <summary>BitsBuilderService class.</summary>
+   /// <seealso cref="Nand2TetrisAssembler.IBitsBuilderService" />
+   public class BitsBuilderService : IBitsBuilderService
+   {
+      /// <summary>Holds the computation definitions collection.</summary>
+      private readonly IDefinitionsCollection _computationDefinitionsCollection;
 
-		public BitsBuilderService(
-			IDefinitionsCollection computationDefinitionsCollection,
-			IDefinitionsCollection jumpDefinitionsCollection,
-			IDefinitionsCollection destinationDefinitionsCollection)
-		{
-			_computationDefinitionsCollection = computationDefinitionsCollection;
-			_jumpDefinitionsCollection = jumpDefinitionsCollection;
-			_destinationDefinitionsCollection = destinationDefinitionsCollection;
-		}
+      /// <summary>Holds the jump definitions collection.</summary>
+      private readonly IDefinitionsCollection _jumpDefinitionsCollection;
 
-		public IBinaryInstructionCollection BuildBinaryInstructionCollection(IInstructionsCollection instructionsCollection, ISymbolsCollection symbolsCollection)
-		{
-			var binaryInstructionCollection = new BinaryInstructionCollection();
+      /// <summary>Holds the destination definitions collection.</summary>
+      private readonly IDefinitionsCollection _destinationDefinitionsCollection;
 
-			foreach (var instruction in instructionsCollection.Instructions)
-			{
-				var numericValue = -1;
+      /// <summary>Initializes a new instance of the <see cref="BitsBuilderService" /> class.</summary>
+      /// <param name="computationDefinitionsCollection">The computation definitions collection.</param>
+      /// <param name="jumpDefinitionsCollection">The jump definitions collection.</param>
+      /// <param name="destinationDefinitionsCollection">The destination definitions collection.</param>
+      public BitsBuilderService(
+         IDefinitionsCollection computationDefinitionsCollection,
+         IDefinitionsCollection jumpDefinitionsCollection,
+         IDefinitionsCollection destinationDefinitionsCollection)
+      {
+         _computationDefinitionsCollection = computationDefinitionsCollection;
+         _jumpDefinitionsCollection = jumpDefinitionsCollection;
+         _destinationDefinitionsCollection = destinationDefinitionsCollection;
+      }
 
-				// handle A - instruction
-				if (instruction.Value.StartsWith("@"))
-				{
-					var trimmedInstruction = instruction.Value.TrimStart('@');
-					var textValue = trimmedInstruction;
+      /// <summary>Builds the binary instruction collection.</summary>
+      /// <param name="instructionsCollection">The instructions collection.</param>
+      /// <param name="symbolsCollection">The symbols collection.</param>
+      /// <returns>A <see cref="IBinaryInstructionCollection" /> reference.</returns>
+      public IBinaryInstructionCollection BuildBinaryInstructionCollection(IInstructionsCollection instructionsCollection, ISymbolsCollection symbolsCollection)
+      {
+         var binaryInstructionCollection = new BinaryInstructionCollection();
 
-					if (symbolsCollection.Contains(trimmedInstruction))
-					{
-						textValue = symbolsCollection.Symbols.First(o => o.Key == trimmedInstruction).Value;
-					}
+         foreach (var instruction in instructionsCollection.Instructions)
+         {
+            var numericValue = -1;
 
-					numericValue = Convert.ToInt16(textValue);
-				}
+            // handle A - instruction
+            if (instruction.Value.StartsWith("@"))
+            {
+               var trimmedInstruction = instruction.Value.TrimStart('@');
+               var textValue = trimmedInstruction;
 
-				// handle C - instruction
-				else
-				{
-					var compText = string.Empty;
-					var destText = string.Empty;
-					var jumpText = string.Empty;
-					var instructionTextParts = default(string[]);
+               if (symbolsCollection.Contains(trimmedInstruction))
+               {
+                  textValue = symbolsCollection.Symbols.First(o => o.Key == trimmedInstruction).Value;
+               }
 
-					// computation instruction
-					if (instruction.Value.Contains('='))
-					{
-						instructionTextParts = instruction.Value.Split('=');
-						destText = instructionTextParts[0];
-						compText = instructionTextParts[1];
-					}
+               numericValue = Convert.ToInt16(textValue);
+            }
 
-					// jump instruction
-					else
-					{
-						instructionTextParts = instruction.Value.Split(';');
-						compText = instructionTextParts[0];
-						jumpText = instructionTextParts[1];
-					}
+            // handle C - instruction
+            else
+            {
+               var compText = string.Empty;
+               var destText = string.Empty;
+               var jumpText = string.Empty;
+               var instructionTextParts = default(string[]);
 
-					var compBits = _computationDefinitionsCollection.Definitions.First(o => o.Operation == compText).Bits;
-					var destBits = _destinationDefinitionsCollection.Definitions.First(o => o.Operation == destText).Bits;
-					var jumpBits = _jumpDefinitionsCollection.Definitions.First(o => o.Operation == jumpText).Bits;
+               // computation case
+               if (instruction.Value.Contains('='))
+               {
+                  instructionTextParts = instruction.Value.Split('=');
+                  destText = instructionTextParts[0];
+                  compText = instructionTextParts[1];
+               }
 
-					// combine all
-					var resultBits = new List<int>();
-					resultBits = resultBits
-						.Concat(new int[3] { 1, 1, 1 })
-						.Concat(compBits)
-						.Concat(destBits)
-						.Concat(jumpBits)
-						.Reverse()
-						.ToList();
+               // jump case
+               else
+               {
+                  instructionTextParts = instruction.Value.Split(';');
+                  compText = instructionTextParts[0];
+                  jumpText = instructionTextParts[1];
+               }
 
-					numericValue = Converter.BitArrayToInt(resultBits.ToArray());
-				}
+               var compBits = _computationDefinitionsCollection.Definitions.First(o => o.Operation == compText).Bits;
+               var destBits = _destinationDefinitionsCollection.Definitions.First(o => o.Operation == destText).Bits;
+               var jumpBits = _jumpDefinitionsCollection.Definitions.First(o => o.Operation == jumpText).Bits;
 
-				binaryInstructionCollection.Add(new BinaryInstructionEntry(numericValue));
-			}
+               // combine
+               var resultBits = new List<int>();
+               resultBits = resultBits
+                  .Concat(jumpBits)
+                  .Concat(destBits)
+                  .Concat(compBits)
+                  .Concat(new int[3] { 1, 1, 1 })
+                  .ToList();
 
-			return binaryInstructionCollection;
-		}
-	}
+               numericValue = Converter.BitArrayToInt(resultBits.ToArray());
+            }
+
+            binaryInstructionCollection.Add(new BinaryInstructionEntry(numericValue));
+         }
+
+         return binaryInstructionCollection;
+      }
+   }
 }

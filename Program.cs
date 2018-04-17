@@ -1,34 +1,32 @@
-﻿using System.Linq;
-
-namespace Nand2TetrisAssembler
+﻿namespace Nand2TetrisAssembler
 {
-	internal class Program
-	{
-		public static IServiceFactory Factory = new ServiceFactory();
+   /// <summary>Program class.</summary>
+   internal class Program
+   {
+      /// <summary>The factory.</summary>
+      public static IServiceFactory Factory = new ServiceFactory();
 
-		private static void Main(string[] args)
-		{
-			var argumentsService = Factory.CreateArgumentsService(args);
-			var fileService = Factory.CreateFileService();
-			var instructionService = default(IInstructionService);
-			var bitsBuilderService = default(IBitsBuilderService);
+      /// <summary>Defines the entry point of the application.</summary>
+      /// <param name="args">The arguments.</param>
+      private static void Main(string[] args)
+      {
+         var argumentsService = Factory.CreateArgumentsService(args);
+         var fileService = Factory.CreateFileService();
+         var instructionService = default(IInstructionService);
+         var bitsBuilderService = default(IBitsBuilderService);
 
-			var argumentOptions = argumentsService.GetOptions();
-			var symbolsCollection = fileService.GetSymbolsCollection();
-			var instructionsCollection = fileService.GetInstructionsCollection(argumentOptions.AssemblyFilePath);
-			var computationDefinitions = fileService.GetComputationDefinitionsCollection();
-			var jumpsDefinitions = fileService.GetJumpDefinitionsCollection();
-			var destinationDefinitions = fileService.GetDestinationDefinitionsCollection();
+         var argumentOptions = argumentsService.GetOptions();
+         var symbolsCollection = fileService.GetSymbolsCollection();
+         var instructionsCollection = fileService.GetInstructionsCollection(argumentOptions.AssemblyFilePath);
+         var computationDefinitions = fileService.GetComputationDefinitionsCollection();
+         var jumpsDefinitions = fileService.GetJumpDefinitionsCollection();
+         var destinationDefinitions = fileService.GetDestinationDefinitionsCollection();
 
-			bitsBuilderService = Factory.CreateBitsBuilderService(computationDefinitions, jumpsDefinitions, destinationDefinitions);
-			instructionService = Factory.CreateInstructionService(instructionsCollection, symbolsCollection, bitsBuilderService);
-			instructionService.Assemble();
+         bitsBuilderService = Factory.CreateBitsBuilderService(computationDefinitions, jumpsDefinitions, destinationDefinitions);
+         instructionService = Factory.CreateInstructionService(instructionsCollection, symbolsCollection, bitsBuilderService);
 
-			// Debug
-			var symText = Helper.ConcatSymbols(symbolsCollection);
-			var instrText = Helper.ConcatInstructions(instructionsCollection);
-			var x = Converter.IntToBitArray(65535);
-			var y = Converter.BitArrayToInt(x.ToArray());
-		}
-	}
+         var hackInstructionsText = instructionService.Assemble();
+         fileService.OutputHackFile(hackInstructionsText, argumentOptions.HackFilePath);
+      }
+   }
 }

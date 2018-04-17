@@ -1,10 +1,18 @@
 ﻿namespace Nand2TetrisAssembler
 {
-	public interface IDefinitionEntry
-	{
-		string Operation { get; }
-		int Code { get; }
+   /// <summary>IDefinitionEntry interface.</summary>
+   public interface IDefinitionEntry
+   {
+      /// <summary>Gets the operation.</summary>
+      /// <value>The operation.</value>
+      string Operation { get; }
 
-		int[] Bits { get; }
-	}
+      /// <summary>Gets the code.</summary>
+      /// <value>The code.</value>
+      int Code { get; }
+
+      /// <summary>Gets the bits.</summary>
+      /// <value>The bits.</value>
+      int[] Bits { get; }
+   }
 }

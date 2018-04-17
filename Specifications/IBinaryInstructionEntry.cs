@@ -1,9 +1,14 @@
 ﻿namespace Nand2TetrisAssembler
 {
-	public interface IBinaryInstructionEntry
-	{
-		int[] Code { get; }
+   /// <summary>IBinaryInstructionEntry class.</summary>
+   public interface IBinaryInstructionEntry
+   {
+      /// <summary>Gets the code.</summary>
+      /// <value>The code.</value>
+      int[] Code { get; }
 
-		string ToString();
-	}
+      /// <summary>Returns a <see cref="System.String" /> that represents this instance.</summary>
+      /// <returns>A <see cref="System.String" /> that represents this instance.</returns>
+      string ToString();
+   }
 }

@@ -1,13 +1,10 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace Nand2TetrisAssembler
+﻿namespace Nand2TetrisAssembler
 {
-	public interface IArgumentService
-	{
-		IArgumentOptions GetOptions();
-	}
+   /// <summary>IArgumentService interface.</summary>
+   public interface IArgumentService
+   {
+      /// <summary>Gets the options.</summary>
+      /// <returns></returns>
+      IArgumentOptions GetOptions();
+   }
 }

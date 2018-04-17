@@ -1,8 +1,14 @@
 ﻿namespace Nand2TetrisAssembler
 {
-	public interface ISymbolEntry
-	{
-		string Key { get; }
-		string Value { get; }
-	}
+   /// <summary>ISymbolEntry interface.</summary>
+   public interface ISymbolEntry
+   {
+      /// <summary>Gets the key.</summary>
+      /// <value>The key.</value>
+      string Key { get; }
+
+      /// <summary>Gets the value.</summary>
+      /// <value>The value.</value>
+      string Value { get; }
+   }
 }

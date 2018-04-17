@@ -1,7 +1,10 @@
 ﻿namespace Nand2TetrisAssembler
 {
-	public interface IInstructionEntry
-	{
-		string Value { get; }
-	}
+   /// <summary>IInstructionEntry interface.</summary>
+   public interface IInstructionEntry
+   {
+      /// <summary>Gets the value.</summary>
+      /// <value>The value.</value>
+      string Value { get; }
+   }
 }

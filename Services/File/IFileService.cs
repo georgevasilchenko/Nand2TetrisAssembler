@@ -11,5 +11,7 @@
       IDefinitionsCollection GetJumpDefinitionsCollection();
 
       IDefinitionsCollection GetDestinationDefinitionsCollection();
+
+      void OutputHackFile(string hackInstructionsText, string path);
    }
 }

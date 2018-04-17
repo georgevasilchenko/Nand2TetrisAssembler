@@ -2,8 +2,11 @@
 
 namespace Nand2TetrisAssembler
 {
-	public interface IDefinitionsCollection
-	{
-		IEnumerable<IDefinitionEntry> Definitions { get; }
-	}
+   /// <summary>IDefinitionsCollection interface.</summary>
+   public interface IDefinitionsCollection
+   {
+      /// <summary>Gets the definitions.</summary>
+      /// <value>The definitions.</value>
+      IEnumerable<IDefinitionEntry> Definitions { get; }
+   }
 }

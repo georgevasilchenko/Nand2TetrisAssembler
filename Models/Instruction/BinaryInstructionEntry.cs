@@ -1,34 +1,25 @@
-﻿using System;
-using System.Linq;
+﻿using System.Linq;
 
 namespace Nand2TetrisAssembler
 {
-	public class BinaryInstructionEntry : IBinaryInstructionEntry
-	{
-		public int[] Code { get; private set; }
+   /// <summary>BinaryInstructionEntry class.</summary>
+   /// <seealso cref="Nand2TetrisAssembler.IBinaryInstructionEntry" />
+   public class BinaryInstructionEntry : IBinaryInstructionEntry
+   {
+      /// <summary>Gets the code.</summary>
+      /// <value>The code.</value>
+      public int[] Code { get; private set; }
 
-		public BinaryInstructionEntry(string bitsText)
-		{
-			Code = bitsText
-				.Select(c => int.Parse(c.ToString()))
-				.ToArray();
-		}
+      /// <summary>Initializes a new instance of the <see cref="BinaryInstructionEntry" /> class.</summary>
+      /// <param name="number">The number.</param>
+      public BinaryInstructionEntry(int number) => Code = Converter.IntToBitArray(number).ToArray();
 
-		public BinaryInstructionEntry(int[] bits)
-		{
-			Code = bits;
-		}
+      /// <summary>Initializes a new instance of the <see cref="BinaryInstructionEntry" /> class.</summary>
+      /// <param name="spec">The spec.</param>
+      public BinaryInstructionEntry(IBinaryInstructionEntry spec) => Code = spec.Code;
 
-		public BinaryInstructionEntry(int number)
-		{
-			Code = Converter.IntToBitArray(number).ToArray();
-		}
-
-		public BinaryInstructionEntry(IBinaryInstructionEntry spec)
-		{
-			Code = spec.Code;
-		}
-
-		public override string ToString() => string.Join("", Code.Reverse());
-	}
+      /// <summary>Returns a <see cref="System.String" /> that represents this instance.</summary>
+      /// <returns>A <see cref="System.String" /> that represents this instance.</returns>
+      public override string ToString() => string.Join("", Code.Reverse());
+   }
 }

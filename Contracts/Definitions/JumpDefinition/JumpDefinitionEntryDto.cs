@@ -2,15 +2,23 @@
 
 namespace Nand2TetrisAssembler
 {
-	public class JumpDefinitionEntryDto : IDefinitionEntry
-	{
-		[XmlAttribute(AttributeName = "operation", Namespace = "")]
-		public string Operation { get; set; }
+   /// <summary>JumpDefinitionEntryDto class.</summary>
+   /// <seealso cref="Nand2TetrisAssembler.IDefinitionEntry" />
+   public class JumpDefinitionEntryDto : IDefinitionEntry
+   {
+      /// <summary>Gets or sets the operation.</summary>
+      /// <value>The operation.</value>
+      [XmlAttribute(AttributeName = "operation", Namespace = "")]
+      public string Operation { get; set; }
 
-		[XmlAttribute(AttributeName = "code", Namespace = "")]
-		public int Code { get; set; }
+      /// <summary>Gets or sets the code.</summary>
+      /// <value>The code.</value>
+      [XmlAttribute(AttributeName = "code", Namespace = "")]
+      public int Code { get; set; }
 
-		[XmlIgnore]
-		public int[] Bits => null;
-	}
+      /// <summary>Gets the bits.</summary>
+      /// <value>The bits.</value>
+      [XmlIgnore]
+      public int[] Bits => null;
+   }
 }
